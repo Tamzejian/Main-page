@@ -1,0 +1,23 @@
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 16x;
+}
+
+code{
+  font-family: 'Courier New', monospace;
+  font-size: 16x;
+}
+
+p.notabene {
+  font-family: Verdana, sans-serif;
+  font-size: 10px;
+}
