@@ -40,7 +40,8 @@ In the date of writing of this page (2026-05-06) version are :
 <h4>Solved some troubleshoots</h4>
 <p>
 After installing <a href="https://en.wikipedia.org/wiki/GNU_Guile">guile3.0</a> form officiel repository   
-I was trying to compile a code under Ubuntu from <a href ="https://gitlab.com/NalaGinrut/guile-colorized">Nala Ginrut -> guile-colorized<a> .I downloaded <b>colorized.scm</b> and make file in the same directory. I just needed to type <code>sudo make install</code> in a terminal. It did not work.
+I was trying to compile a code under Ubuntu from <a href ="https://gitlab.com/NalaGinrut/guile-colorized">Nala Ginrut -> guile-colorized<a>. <br />
+I downloaded <b>colorized.scm</b> and make file in the same directory. I just needed to type <code>sudo make install</code> in a terminal. It did not work.
 </p>
 
 So here what IA recommended : 
@@ -56,18 +57,19 @@ Note: guile-colorized requires Guile 2.0.9 or higher.
 
 <p>
 2. Clone the Repository
-Instead of downloading single files, we need the entire repository so the Makefile has access to the necessary build scripts and structure.
+Instead of downloading single files, we need the entire repository so the Makefile has access to the necessary build scripts and structure. <br /> <br />
 
 <code>
-cd ~
-git clone https://gitlab.com/NalaGinrut/guile-colorized.git
-cd guile-colorized
+cd ~ <br />
+git clone https://gitlab.com/NalaGinrut/guile-colorized.git <br />
+cd guile-colorized <br />
 </code>
 </p>
 
 <p>
 3. Install
-Now we can run the installation command as the README suggests: <code> sudo make install </code>. This will copy the <b>colorized.scm</b> file to the correct Guile module directory (usually ~/.local/share/guile/3.0/ice-9/ or /usr/share/guile/3.0/ice-9/). 
+Now we can run the installation command as the README suggests: <code> sudo make install </code>.  <br />
+This will copy the <b>colorized.scm</b> file to the correct Guile module directory (usually ~/.local/share/guile/3.0/ice-9/ or /usr/share/guile/3.0/ice-9/). 
 </p>
 
 <p>
