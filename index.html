@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="gitSite.css">
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Resume page</h1>
+
+<h2>Introduction</h2>
+<p>
+Hi ! In this page I write a resume of all technical difficulties encountered when working on algorithmic music.
+As a musician amateur of coding and science/music interconnections, I could lack a lot of elementary aspect in technological issues.
+So I am writing a memo here to however is finding similar difficulties.
+</p>
+
+<h2>Mini projects for algorithmic music</h2>
+<h3>Lilypond with Guile</h3>
+<p>
+I was initially trying to white algorithms that generates music code directly integrable in Lilypond.
+</p>
+<p>
+So I started reading about a Lisp dialect called Scheme.
+I needed some IDE, the only one I know of is <a href="https://racket-lang.org/">Racket</a> (previously DR. Scheme) and then guile whitch is integrated in Lilypond.
+</p>
+<p>
+For some reason, Linux Ubuntu Studio repositories did not upgrade Lilypond, Frescobaldi nor Guile.
+</p>
+<p>
+In the date of writing of this page (2026-05-06) version are : 
+<ul>
+	<li> <a href url = "https://lilypond.org/index.fr.html"> Lilypond stable </a>
+	<li> <a href="https://frescobaldi.org/download.html"> Frescobaldi</a>
+</ul>
+</p>
+
+<p> So maybe I will later learn how to add my own repositories to update them.
+
+<h4>Solved some troubleshoots</h4>
+<p>
+After installing <a href="https://en.wikipedia.org/wiki/GNU_Guile">guile3.0</a> form officiel repository   
+I was trying to compile a code under Ubuntu from <a href ="here https://gitlab.com/NalaGinrut/guile-colorized">Nala Ginrut -> guile-colorized<a> .I downloaded <b>colorized.scm</b> and make file in the same directory. I just needed to type <code>sudo make install</code> in a terminal. It did not work.
+</p>
+
+So here what IA recommended : 
+<p>
+1. Install Dependencies and add the package : guile-3.0-dev 
+<code>
+sudo apt update
+sudo guile-3.0-dev
+</code>
+
+Note: guile-colorized requires Guile 2.0.9 or higher.
+</p>
+
+<p>
+2. Clone the Repository
+Instead of downloading single files, we need the entire repository so the Makefile has access to the necessary build scripts and structure.
+
+<code>
+cd ~
+git clone https://gitlab.com/NalaGinrut/guile-colorized.git
+cd guile-colorized
+</code>
+</p>
+
+<p>
+3. Install
+Now we can run the installation command as the README suggests: <code> sudo make install </code>. This will copy the <b>colorized.scm</b> file to the correct Guile module directory (usually ~/.local/share/guile/3.0/ice-9/ or /usr/share/guile/3.0/ice-9/). 
+</p>
+
+<p>
+4. Configure REPL
+To enable the colors, we need to add the following lines to your ~/.guile file. The file doesn't exist, so create and edit* it: <code>sudo nano ~/.guile</code>. <br />
+Copy paste the following : 
+<code>
+<br />
+<br />
+;; Load the colorized module	<br />
+(use-modules (ice-9 colorized))	<br />
+(activate-colorized)	<br />
+</code>
+</p>
+<p>
+If we also want readline support (arrow keys, history), this should be added as well:<br /><br />
+<code>
+(use-modules (ice-9 readline))<br />
+(activate-readline)<br />
+</code>
+</p>
+
+<p class="notabene"> 
+* : In nano editor save by CTRL-O, return and CTRL-X to return to terminal.
+</p>
+	
+<p>
+The previous attempt failed because the makefile likely contains commands like <code> mkdir -p $(DESTDIR)$(guile_site_dir)/ice-9 </code> or relies on variables set by make that assume a full repository structure. If you just placed a standalone Makefile in a folder with only <b>colorized.scm</b>, it probably tried to reference a configure script, <b>Makefile.in</b>, or other source files that weren't there, causing the build to fail.
+</p>
+
+<p>
+In order to verify if everything is correctly done just type : guile in terminal.
+</p>
+
+</body>
+</html>
